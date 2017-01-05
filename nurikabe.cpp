@@ -389,7 +389,8 @@ bool canUsePolyominoAt(Grid const& g, Polyomino const& poly, int i, int j) {
     for (pair<int, int> p : poly.interior) {
         int x = p.first + i;
         int y = p.second + j;
-        if (!(x >= 0 && x < g.width && y >= 0 && y < g.height && g.grid[x][y] != Black)) {
+        if (!(x >= 0 && x < g.width && y >= 0 && y < g.height && g.grid[x][y] != Black &&
+                (p.first == 0 || p.second == 0 || g.input[x][y] == -1))) {
             return false;
         }
     }
